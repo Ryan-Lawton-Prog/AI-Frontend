@@ -3,10 +3,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 //import axios from 'axios';
 import "./Login.css";
+import { useHistory } from 'react-router-dom';
 
 export default function Login() {
   const [usernameV, setEmail] = useState("");
   const [passwordV, setPassword] = useState("");
+  const history = useHistory();
+  const handleClick = () => history.push('/createAccount');
 
   function validateForm() {
     return usernameV.length > 0 && passwordV.length > 0;
@@ -21,7 +24,7 @@ export default function Login() {
     };
     const requestMetadata = {
       method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(postBody)
     } // FLASK NEEDS TO BE CHANGED TO SUPPORT JSON DATA INSTEAD OF FORM DATA
     fetch(url, requestMetadata)
@@ -63,6 +66,11 @@ export default function Login() {
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
         </Button>
+        
+
+        <button type="button" onClick={handleClick}>
+          Create Account
+        </button>
       </Form>
     </div>
   );
