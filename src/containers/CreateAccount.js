@@ -78,24 +78,30 @@ class CreateAccount extends React.Component {
             <h1>Username already exists</h1>
         }
         <form onSubmit={this.handleSubmit}>
-          <label>Username
-            <input
-              name="username"
-              autoFocus
-              type="text"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>Password
-            <input
-              name="password"
-              type="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </label>
-          <button block size="lg" type="submit" disabled={!this.state.validForm}>
+          <div className="form-group">
+            <label>Username
+              <input
+                name="username"
+                autoFocus
+                type="text"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <div className="form-group">
+            <label>Password
+              <input
+                name="password"
+                type="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+            </label>
+          </div>
+
+          <button className="btn btn-primary btn-block" type="submit" disabled={!this.state.validForm}>
             Create Account
           </button>
         </form>
