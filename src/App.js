@@ -1,8 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
 import React from 'react';
+import Home from "./containers/Home";
 import Login from "./containers/Login";
 import CreateAccount from "./containers/CreateAccount";
+
+import PrivateRoute from './helpers/PrivateRoute'
+import Dashboard from "./containers/Dashboard";
 
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
@@ -10,7 +13,6 @@ import {
   BrowserRouter as Router,
   Switch,
   Route
-  //Link
 } from "react-router-dom";
 
 function App() {
@@ -18,28 +20,11 @@ function App() {
     <Router>
       <div className="App">
         <Switch>
-          <Route path="/login">
-            <Login />
-          </Route>
-          <Route path="/createAccount">
-            <CreateAccount />
-          </Route>
-          <Route path="/">
-            <header className="App-header">
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Edit <code>src/App.js</code> and save to reload.
-              </p>
-              <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
-          </Route>
+          <Route path="/" exact component={Home}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/createAccount" component={CreateAccount}/>
+
+          <PrivateRoute authed={localStorage.getItem('user')} path='/dashboard' component={Dashboard} />
         </Switch>
       </div>
     </Router>
