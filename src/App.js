@@ -3,6 +3,9 @@ import './App.css';
 import React from 'react';
 import Login from "./containers/Login";
 import CreateAccount from "./containers/CreateAccount";
+
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+
 import {
   BrowserRouter as Router,
   Switch,
