@@ -42,7 +42,7 @@ class CreateAccount extends React.Component {
         (result) => {
           console.log(result);
           localStorage.setItem('user', result.token);
-          this.props.history.push('/login');
+          this.props.history.push('/dashboard');
         },
         // Note: it's important to handle errors here
         // instead of a catch() block so that we don't swallow
