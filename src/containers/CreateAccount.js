@@ -1,10 +1,16 @@
 import React from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 //import axios from 'axios';
 import "./Login.css";
+import { withRouter } from 'react-router-dom'
 
-export default class CreateAccount extends React.Component {
+function handleErrors(response) {
+  if (!response.ok) {
+      throw Error(response.statusText);
+  }
+  return response;
+}
+
+class CreateAccount extends React.Component {
   constructor(props){
     super(props);
     this.state = {
@@ -31,6 +37,7 @@ export default class CreateAccount extends React.Component {
       body: JSON.stringify(postBody)
     } // FLASK NEEDS TO BE CHANGED TO SUPPORT JSON DATA INSTEAD OF FORM DATA
     fetch(url, requestMetadata)
+      .then(handleErrors)
       .then(res => res.json())
       .then(
         (result) => {
@@ -42,49 +49,58 @@ export default class CreateAccount extends React.Component {
         // exceptions from actual bugs in components.
         (error) => {
           console.log(error);
-          console.log("test")
-          this.handleChange({errorMessage:true})
+          console.log("test");
+          this.setState({errorMessage: true});
         }
       )
     event.preventDefault();
   }
 
   handleChange(event) {
-      this.setState({value: event.target.value});
-      if (this.states.username.length > 0 && this.state.password.length > 0){
-          this.setState({validForm: true});
-      }else{
-          this.setState({validForm: false});
-      }
+    const target = event.target;
+    const name = target.name;
+    this.setState({
+      [name]: target.value
+    });
+    if (this.state.username && this.state.username.length > 0 && 
+        this.state.password && this.state.password.length > 0){
+        this.setState({validForm: true});
+    }else{
+        this.setState({validForm: false});
+    }
   }
 
-  return() {
-    <div className="CreateAccount">
-      {this.state.errorMessage &&
-          <h1>Username already exists</h1>
-      }
-      <Form onSubmit={this.handleSubmit}>
-        <Form.Group size="lg" controlId="username">
-          <Form.Label>Username</Form.Label>
-          <Form.Control
-            autoFocus
-            type="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            type="password"
-            value={this.state.password}
-            onChange={this.handleChange}
-          />
-        </Form.Group>
-        <Button block size="lg" type="submit" disabled={!this.state.validForm}>
-          Create Account
-        </Button>
-      </Form>
-    </div>
+  render() {
+    return (
+      <div className="CreateAccount">
+        {this.state.errorMessage &&
+            <h1>Username already exists</h1>
+        }
+        <form onSubmit={this.handleSubmit}>
+          <label>Username
+            <input
+              name="username"
+              autoFocus
+              type="text"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </label>
+          <label>Password
+            <input
+              name="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </label>
+          <button block size="lg" type="submit" disabled={!this.state.validForm}>
+            Create Account
+          </button>
+        </form>
+      </div>
+    );
   }
 }
+
+export default withRouter(CreateAccount)
