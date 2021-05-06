@@ -24,7 +24,7 @@ function App() {
           <Route path="/login" component={Login}/>
           <Route path="/createAccount" component={CreateAccount}/>
 
-          <PrivateRoute authed={localStorage.getItem('user')} path='/dashboard' component={Dashboard} />
+          <PrivateRoute path='/dashboard' component={Dashboard} />
         </Switch>
       </div>
     </Router>
