@@ -35,13 +35,14 @@ class CreateAccount extends React.Component {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(postBody)
-    } // FLASK NEEDS TO BE CHANGED TO SUPPORT JSON DATA INSTEAD OF FORM DATA
+    }
     fetch(url, requestMetadata)
       .then(handleErrors)
       .then(res => res.json())
       .then(
         (result) => {
           console.log(result);
+          localStorage.setItem('user', result.token);
           this.props.history.push('/login');
         },
         // Note: it's important to handle errors here
