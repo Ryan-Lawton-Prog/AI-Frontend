@@ -40,7 +40,7 @@ export default class Footer extends React.Component {
                                 </a>
                             </li>
                         </ul>
-                        <p class="copyright text-muted">Copyright &copy; Your Website 2021</p>
+                        <p class="copyright text-muted">Copyright &copy; Ryan Lawton 2021</p>
                     </div>
                 </div>
             </div>
