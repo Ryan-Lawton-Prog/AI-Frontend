@@ -62,39 +62,48 @@ class Login extends React.Component {
 
   render() {
     return (
-      <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <div className="form-group">
-            <label>Username
-              <input
-                autoFocus
-                name="username"
-                type="text"
-                value={this.state.username}
-                onChange={this.handleChange}
-              />
-            </label>
-          </div>
+      <div>
+        <div className="Login">
+        Login
+          <form onSubmit={this.handleSubmit}>
+            <div className="form-group">
+              
+              <div className="pad">
+                <input
+                  autoFocus
+                  placeholder="Username"
+                  name="username"
+                  type="text"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+              </div>
+              
+              <div className="pad">
+                <input
+                  placeholder="Password"
+                  name="password"
+                  type="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+              </div>
 
-          <div className="form-group">
-            <label>Password
-              <input
-                name="password"
-                type="password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </label>
-          </div>
-
-          <button className="btn btn-primary btn-block" type="submit" disabled={!this.state.validForm}>
-            Login
-          </button>
-          
-          <button className="btn btn-primary btn-block" type="button" onClick={() => this.props.history.push('/createAccount')}>
-            Create Account
-          </button>
-        </form>
+              <div className="pad">
+                <button type="submit" disabled={!this.state.validForm}>
+                  Login
+                </button>
+                <button type="button" onClick={() => this.props.history.push('/createAccount')}>
+                  Create Account
+                </button>
+              </div>
+              
+              <div className="pad">
+                
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
     );
   }

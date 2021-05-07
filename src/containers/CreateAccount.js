@@ -1,5 +1,5 @@
 import React from "react";
-import "./Login.css";
+import "./CreateAccount.css";
 import { withRouter } from 'react-router-dom'
 
 function handleErrors(response) {
@@ -78,31 +78,36 @@ class CreateAccount extends React.Component {
         }
         <form onSubmit={this.handleSubmit}>
           <div className="form-group">
-            <label>Username
+            <div className="pad">
               <input
+                placeholder="Username"
                 name="username"
                 autoFocus
                 type="text"
                 value={this.state.username}
                 onChange={this.handleChange}
               />
-            </label>
-          </div>
+            </div>
 
-          <div className="form-group">
-            <label>Password
+            <div className="pad">
               <input
+                placeholder="Password"
                 name="password"
                 type="password"
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-            </label>
-          </div>
+            </div>
 
-          <button className="btn btn-primary btn-block" type="submit" disabled={!this.state.validForm}>
-            Create Account
-          </button>
+            <div className="pad">
+              <button type="submit" disabled={!this.state.validForm}>
+                Create Account
+              </button>
+              <button type="button" onClick={() => this.props.history.push('/login')}>
+                Cancel
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     );
