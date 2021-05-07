@@ -1,5 +1,4 @@
 import React from "react";
-import "./Login.css";
 import { withRouter } from 'react-router-dom'
 
 class Dashboard extends React.Component{

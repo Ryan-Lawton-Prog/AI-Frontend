@@ -1,7 +1,7 @@
 import React from "react";
-import "./Login.css";
-import { withRouter } from 'react-router-dom'
-import logo from '../images/logo.svg';
+import { withRouter } from 'react-router-dom';
+import logo from '../../images/logo.svg';
+import './Root.css';
 
 class Home extends React.Component {
   constructor(props){
