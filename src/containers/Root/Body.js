@@ -66,7 +66,7 @@ export default class Body extends React.Component {
                                     </a>
                                     <p class="post-meta">
                                         Posted by 
-                                        <a href="#!">{blog.author}</a>
+                                        <a href="#!">{` `+blog.author+` `}</a>
                                         on {blog.date} 
                                     </p>
                                 </div>
