@@ -1,7 +1,11 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
-import logo from '../../images/logo.svg';
+import Nav from './Nav.js';
+import Header from './Header.js';
+import Body from './Body.js';
+import Footer from './Footer.js';
 import './Root.css';
+import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css';
 
 class Home extends React.Component {
   constructor(props){
@@ -12,20 +16,12 @@ class Home extends React.Component {
 
   render() {
     return (
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Root">
+        <Nav/>
+        <Header/>
+        <Body/>
+        <Footer/>
+      </div>
     );
   }
 }
