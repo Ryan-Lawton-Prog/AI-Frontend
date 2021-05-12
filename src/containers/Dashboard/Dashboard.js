@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import UploadDataset from '../ModelDashboard/UploadDataset';
 import ProcessModel from '../ModelDashboard/ProcessModel';
 import ViewModels from '../ModelDashboard/ViewModels';
+import ViewDatasets from '../ModelDashboard/ViewDatasets';
 import {
     BrowserRouter as Router,
     Switch,
@@ -24,6 +25,7 @@ class Dashboard extends React.Component{
                     <Route path="/dashboard/uploaddata" component={UploadDataset}/>
                     <Route path="/dashboard/processmodel" component={ProcessModel}/>
                     <Route path="/dashboard/viewmodels" component={ViewModels}/>
+                    <Route path="/dashboard/viewmdatasets" component={ViewDatasets}/>
                     <Route path="/dashboard/*" exact component={ModelDashboard}/>
                     <p>{localStorage.getItem('user')}</p>
                 </Switch>
