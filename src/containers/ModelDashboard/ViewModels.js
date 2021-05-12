@@ -5,8 +5,9 @@ class ViewModels extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            file_names: []
         };
-      }
+    }
 
     render() {
         return (

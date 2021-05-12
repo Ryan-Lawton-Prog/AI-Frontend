@@ -6,7 +6,7 @@ class ProcessModel extends React.Component{
         super(props);
         this.state = {
         };
-      }
+    }
 
     render() {
         return (
